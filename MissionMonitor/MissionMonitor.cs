@@ -432,7 +432,7 @@ namespace EddiMissionMonitor
                     // Dummy mission to populate 'Passengers' parameters
                     // 'Missions' event will populate 'name', 'status', 'type' & 'expiry'
                     MissionStatus status = MissionStatus.FromEDName("Active");
-                    mission = new Mission(passenger.missionid, "Mission_None", DateTime.Now.AddDays(1), status)
+                    mission = new Mission(passenger.missionid, "Mission_None", DateTime.UtcNow.AddDays(1), status)
                     {
                         passengertypeEDName = passenger.type,
                         passengervips = passenger.vip,
