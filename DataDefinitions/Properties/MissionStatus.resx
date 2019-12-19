@@ -120,6 +120,9 @@
   <data name="Active" xml:space="preserve">
     <value>Active</value>
   </data>
+  <data name="Claim" xml:space="preserve">
+    <value>Claim</value>
+  </data>
   <data name="Complete" xml:space="preserve">
     <value>Complete</value>
   </data>
