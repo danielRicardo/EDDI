@@ -386,8 +386,12 @@ namespace EddiMissionMonitor
                 // Add missions to mission log
                 else
                 {
-                    AddMission(mission);
-                    update = true;
+                    // Starter zone missions have no consistent 'accepted' or 'completed' events, so exclude them from the mission log
+                    if (mission.typeEDName != "StartZone")
+                    {
+                        AddMission(mission);
+                        update = true;
+                    }
                 }
             }
 
@@ -398,9 +402,9 @@ namespace EddiMissionMonitor
                 if (!missionEntry.communal)
                 {
                     Mission mission = @event.missions.FirstOrDefault(m => m.missionid == missionEntry.missionid);
-                    if (mission == null)
+                    if (mission == null || mission.name.Contains("StartZone"))
                     {
-                        // Strip out the stray from the mission log
+                        // Strip out the stray and 'StartZone' missions from the log
                         RemoveMissionWithMissionId(missionEntry.missionid);
                         update = true;
                     }
@@ -620,8 +624,9 @@ namespace EddiMissionMonitor
             bool update = false;
 
             // Protect against duplicates and empty strings
-            bool exists = missions.Any(m => m.missionid == @event.missionid);
-            if (!exists && !string.IsNullOrEmpty(@event.name))
+            bool exists = missions?.Any(m => m.missionid == @event.missionid) ?? false;
+            bool valid = !string.IsNullOrEmpty(@event.name) && !@event.name.Contains("StartZone");
+            if (!exists && valid)
             {
                 MissionStatus status = MissionStatus.FromEDName("Active");
                 Mission mission = new Mission(@event.missionid ?? 0, @event.name, @event.expiry, status)
