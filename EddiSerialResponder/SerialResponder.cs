@@ -149,6 +149,7 @@ namespace EddiSerialResponder
                     this.serialPort.WriteLine($"LANDING_GEAR;{shipLandingGearEvent.deployed}");
                     break;
                 case ShipLightsEvent shipLightsEvent:
+                    this.serialPort.WriteLine($"LIGHTS;{shipLightsEvent.lightson}");
                     break;
                 case ShipLowFuelEvent shipLowFuelEvent:
                     break;
