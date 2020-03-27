@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="EddiSerialResponder.ConfigurationWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EddiSerialResponder"
+             xmlns:resx="clr-namespace:EddiSerialResponder.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <DockPanel LastChildFill="True" Background="#FFE5E5E5" Margin="-10">
+        <Grid DockPanel.Dock="Top" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="285" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Column="0" DockPanel.Dock="Top">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <TextBlock Margin="5" TextWrapping="Wrap" Text="{x:Static resx:SerialResponder.logs}" />
+                    <CheckBox x:Name="logsCheckbox" VerticalAlignment="Center" Margin="5, 0" Checked="logsEnabled" Unchecked="logsDiabled" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <TextBlock Margin="5" TextWrapping="Wrap" Text="{x:Static resx:SerialResponder.logs_only}" />
+                    <CheckBox x:Name="logsOnlyCheckbox" Margin="0" VerticalAlignment="Center" Checked="logsOnlyEnabled" />
+                </StackPanel>
+            </StackPanel>
+            <RichTextBox x:Name="serialResponderHelp" DockPanel.Dock="Left" Grid.Column="1" Width="Auto" Margin="5" IsReadOnly="True" IsDocumentEnabled="True" Background="#FFE5E5E5" BorderThickness="0">
+                <FlowDocument Background="#FFE5E5E5">
+                    <Paragraph>
+                        <TextBlock TextWrapping="Wrap">
+                            <Run Text="{x:Static resx:SerialResponder.serialResponderHelp}" />
+                            <Hyperlink Click="serialeResponderHelpHere">
+                                <Run Text="{x:Static resx:SerialResponder.serialResponderHelpHere}" />
+                            </Hyperlink>
+                        </TextBlock>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </Grid>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5, 0" >
+            <TextBlock VerticalAlignment="Center" Text="{x:Static resx:SerialResponder.active_cockpit}" />
+            <ComboBox Margin="5, 0" ItemsSource="{Binding Cockpits}" SelectedValue="{Binding Cockpit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectionChanged="cockpitChagnged"></ComboBox>
+        </StackPanel>
+        <Grid DockPanel.Dock="Bottom" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Margin="10" HorizontalAlignment="Center" Grid.Column="0" Click="copyCockpitClicked" Content="{x:Static resx:SerialResponder.button_copy}" />
+            <Button Margin="10" HorizontalAlignment="Center" Grid.Column="1" Click="newScriptClicked"  Content="{x:Static resx:SerialResponder.button_new}" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Visibility" Value="Visible" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=Cockpit.IsEditable}" Value="False">
+                                <Setter Property="Visibility" Value="Hidden" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Margin="10" HorizontalAlignment="Center" Grid.Column="2" Click="deleteCockpitClicked" Content="{x:Static resx:SerialResponder.button_delete}" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Visibility" Value="Visible" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=Cockpit.IsEditable}" Value="False">
+                                <Setter Property="Visibility" Value="Hidden" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <TextBlock x:Name="defaultText" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="Wrap" Width="Auto" Margin="10, 0" Text="{x:Static resx:SerialResponder.default_is_read_only}" FontWeight="Bold" FontStyle="Italic" FontSize="13" /> 
+        </Grid>
+        <DataGrid Margin="0,5" IsReadOnly="True" AutoGenerateColumns="False" x:Name="scriptsData" CanUserAddRows="false" EnableRowVirtualization="False" ItemsSource="{Binding Cockpit.CockpitCommands}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static resx:SerialResponder.header_name}" SortDirection="Ascending" Binding="{Binding Path=Value.Name}"/>
+                <DataGridTemplateColumn Header="{x:Static resx:SerialResponder.header_enabled}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border IsEnabled="{Binding Path=Value.Responder}">
+                                <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="{Binding Path=Value.Enabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Checked="serialResponderScriptsEnabledUpdated" Unchecked="serialResponderScriptsEnabledUpdated"/>
+                            </Border>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>
