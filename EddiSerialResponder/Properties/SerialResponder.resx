@@ -117,10 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="active_cockpit" xml:space="preserve">
+    <value>Active cockpit</value>
+  </data>
+  <data name="button_copy" xml:space="preserve">
+    <value>Copy cockpit</value>
+  </data>
+  <data name="button_delete" xml:space="preserve">
+    <value>Delete cockpit</value>
+  </data>
+  <data name="button_new" xml:space="preserve">
+    <value>Create new sctipt</value>
+  </data>
+  <data name="default_is_read_only" xml:space="preserve">
+    <value>The default cockpit cannot be modified. If you wish to make changes, create a copy.</value>
+  </data>
   <data name="desc" xml:space="preserve">
     <value>Respond to events by sending user-scripted data over a serial port. Use this responder to build your own physical cockpit panels</value>
   </data>
+  <data name="header_description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="header_enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="header_name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="help_button" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="logs" xml:space="preserve">
+    <value>Write logs of the serial commands to the file %APPDATA%\EDDI\serialresponder.out</value>
+  </data>
+  <data name="logs_only" xml:space="preserve">
+    <value>Do not send data over the serial port when logs are enabled</value>
+  </data>
   <data name="name" xml:space="preserve">
     <value>Serial Responder</value>
+  </data>
+  <data name="serialResponderHelp" xml:space="preserve">
+    <value>Read about the serial responder's functions</value>
+  </data>
+  <data name="serialResponderHelpHere" xml:space="preserve">
+    <value>here.</value>
   </data>
 </root>

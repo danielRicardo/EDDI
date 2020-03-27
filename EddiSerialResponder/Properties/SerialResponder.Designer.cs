@@ -61,6 +61,51 @@ namespace EddiSerialResponder.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active cockpit.
+        /// </summary>
+        public static string active_cockpit {
+            get {
+                return ResourceManager.GetString("active_cockpit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy cockpit.
+        /// </summary>
+        public static string button_copy {
+            get {
+                return ResourceManager.GetString("button_copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete cockpit.
+        /// </summary>
+        public static string button_delete {
+            get {
+                return ResourceManager.GetString("button_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new sctipt.
+        /// </summary>
+        public static string button_new {
+            get {
+                return ResourceManager.GetString("button_new", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The default cockpit cannot be modified. If you wish to make changes, create a copy..
+        /// </summary>
+        public static string default_is_read_only {
+            get {
+                return ResourceManager.GetString("default_is_read_only", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Respond to events by sending user-scripted data over a serial port. Use this responder to build your own physical cockpit panels.
         /// </summary>
         public static string desc {
@@ -70,11 +115,83 @@ namespace EddiSerialResponder.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string header_description {
+            get {
+                return ResourceManager.GetString("header_description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled.
+        /// </summary>
+        public static string header_enabled {
+            get {
+                return ResourceManager.GetString("header_enabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string header_name {
+            get {
+                return ResourceManager.GetString("header_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string help_button {
+            get {
+                return ResourceManager.GetString("help_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write logs of the serial commands to the file %APPDATA%\EDDI\serialresponder.out.
+        /// </summary>
+        public static string logs {
+            get {
+                return ResourceManager.GetString("logs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do not send data over the serial port when logs are enabled.
+        /// </summary>
+        public static string logs_only {
+            get {
+                return ResourceManager.GetString("logs_only", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Serial Responder.
         /// </summary>
         public static string name {
             get {
                 return ResourceManager.GetString("name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read about the serial responder&apos;s functions.
+        /// </summary>
+        public static string serialResponderHelp {
+            get {
+                return ResourceManager.GetString("serialResponderHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to here..
+        /// </summary>
+        public static string serialResponderHelpHere {
+            get {
+                return ResourceManager.GetString("serialResponderHelpHere", resourceCulture);
             }
         }
     }
